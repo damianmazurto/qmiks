@@ -1,0 +1,24 @@
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container" style="max-width:3000px">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ng-href="/" style="padding:5px"><img src="assets/images/logo.png" style="height:40px"></a>
+        </div>
+        <div id="navbar" collapse="navCollapsed" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" ng-repeat="item in vm.menu">
+
+            <li ng-class="{'active': (vm.current==item.slug)}"><a ui-sref="{{item.slug}}">{{item.title}}</a></li>
+                
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="language" ui-sref="{{vm.lang.slug}}"><img src="assets/images/{{vm.lang.state}}.png"/><span class="hidden-lg hidden-md hidden-sm">{{vm.lang.label}}</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>

@@ -1,0 +1,66 @@
+
+<div class="row">
+<div class="col-sm-12">	
+<h3 ng-bind="book.details.Title"></h3>  
+<br/>
+</div>
+</div>
+
+<div class="row">
+  	<div class="col-sm-4">
+  		<img ng-src="{{book.details.CoverUrl}}" alt="{{book.details.CoverAlt}}">
+
+      <!--<div style="width: 100%;display: inline-block;margin: 10px 0px;">
+      <a href="javascript:void(0)" ng-click="book.share()" title="Share on Facebook" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--facebook"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
+      </div>-->
+      
+      <ul class="social-buttons">
+
+          <li class="facebook">
+              <a target="_blank" href="javascript:void(0)" ng-click="book.share()" title="Share on Facebook" class="popup">
+                   <span class="icon"><i class="fa fa-facebook"></i></span>
+                   <span class="text">Facebook</span>
+              </a>
+          </li>
+
+          <li class="twitter">
+              <a target="_blank" href="http://twitter.com/home?status={{book.details.Title}} {{book.getLocation()}}" class="popup">
+                   <span class="icon"><i class="fa fa-twitter"></i></span>
+              </a>
+          </li>
+  
+          <li class="pinterest">
+               <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{book.getLocation()}}&media={{book.details.CoverUrl}}&description={{book.details.Description}}">
+                    <span class="icon"><i class="fa fa-pinterest"></i></span>
+                </a>
+          </li>
+
+      </ul>
+
+  	</div>
+    <div class="col-sm-8">
+    	<div class="book-desc"><strong>Description:</strong><p ng-bind="book.details.Description"></p></div>
+    	<div><strong>Authors:</strong><p ng-bind="book.details.Authors"></p></div>
+    	<div class="shop-list" ng-repeat="link in book.details.BuyLinks"><a ng-href="{{link.Url}}"><img style="height:50px" ng-src="{{link.LinkImageUrl}}"/></a></div>
+
+    </div>
+</div>
+<br/>
+<strong  ng-if="book.details.Screenshots.length">Sample Pages:</strong>
+<div class="row">
+
+<div class="col-sm-12 sample-pages">
+
+ <a ng-repeat="image in book.details.Screenshots" rel="screen_group" title="Screenshots" ng-href="{{image.Url}}" fancyboxable="example1">
+        <img alt="" ng-src="{{image.Url}}"/>
+  </a>
+  <fancybox box-for="[rel=screen_group]" options="book.screengroup"></fancybox>
+</div>
+
+</div>
+
+
+
+
+
+  
